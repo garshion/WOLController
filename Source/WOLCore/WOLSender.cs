@@ -142,11 +142,15 @@ namespace Bass.Util.WOL
 #else
                 return new byte[0];
 #endif
+            string mac = macAddress.Replace("-", "")
+                    .Replace(":", "")
+                    .Replace(" ", "")
+                    .ToUpper();
 
             byte[] retData = new byte[MAC_ADDRESS_BYTE_ARRAY_SIZE];
 
             for (int i = 0; i < MAC_ADDRESS_BYTE_ARRAY_SIZE; ++i)
-                retData[i] = Convert.ToByte(macAddress.Substring(i * 2, 2), 16);
+                retData[i] = Convert.ToByte(mac.Substring(i * 2, 2), 16);
 
             return retData;
         }
