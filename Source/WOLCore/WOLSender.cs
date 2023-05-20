@@ -90,7 +90,7 @@ namespace Bass.Util.WOL
 
         public string GetLastError() => mLastError;
 
-        private bool _IsValidMacAddress(string macAddress)
+        public static bool IsValidMacAddress(string macAddress)
         {
             if (string.IsNullOrWhiteSpace(macAddress))
                 return false;
@@ -136,7 +136,7 @@ namespace Bass.Util.WOL
 
         private byte[] _ConvertMacAddressToByteArray(string macAddress)
         {
-            if (!_IsValidMacAddress(macAddress))
+            if (!IsValidMacAddress(macAddress))
 #if NETFRAMEWORK
                 return null;
 #else
